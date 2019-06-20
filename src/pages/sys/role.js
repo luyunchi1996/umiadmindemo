@@ -1,12 +1,11 @@
 import React from 'react';
-import SearchList from '@/components/SearchList';
+import SearchLi from '@/components/SearchLi';
 
 class SysRole extends React.PureComponent {
   columns = [
-    { title: '1', dataIndex: 'a' },
-    { title: '2', dataIndex: 'b' },
-    { title: '3', dataIndex: 'c' },
-    { title: '4', dataIndex: 'd' },
+    { title: '角色名称', dataIndex: 'a' },
+    { title: '描述', dataIndex: 'b' },
+    { title: '保存时间', dataIndex: 'c' },
   ];
 
   constructor(props) {
@@ -16,11 +15,7 @@ class SysRole extends React.PureComponent {
 
   getRoleList = () => {
     const tableDatas = {
-      list: [
-        { a: '1', b: '2', c: '3', d: '4' },
-        { a: '1', b: '2', c: '3', d: '4' },
-        { a: '1', b: '2', c: '3', d: '4' },
-      ],
+      list: [{ a: '1', b: '2', c: '3' }, { a: '1', b: '2', c: '3' }, { a: '1', b: '2', c: '3' }],
       page: 1,
       pagination: { current: 1, pageSize: 10, total: 3480 },
       size: 10,
@@ -29,8 +24,20 @@ class SysRole extends React.PureComponent {
     return tableDatas;
   };
 
+  onAddBtnClick = data => {
+    console.log(this);
+    debugger;
+  };
   getActionBtnGroup = () => {
-    return [];
+    return [
+      {
+        key: 'add',
+        text: ' 新增',
+        authkey: 'add',
+        icon: 'plus',
+        handleBtnClick: this.onAddBtnClick,
+      },
+    ];
   };
 
   getSearchEntity = () => {
@@ -55,9 +62,9 @@ class SysRole extends React.PureComponent {
     };
     const tableDatas = {
       list: [
-        { a: '1', b: '2', c: '3', d: '4' },
-        { a: '1', b: '2', c: '3', d: '4' },
-        { a: '1', b: '2', c: '3', d: '4' },
+        { a: '00', b: '01', c: '02', d: '4' },
+        { a: '10', b: '11', c: '12', d: '4' },
+        { a: '20', b: '21', c: '22', d: '4' },
       ],
       page: 1,
       pagination: { current: 1, pageSize: 10, total: 3480 },
@@ -71,14 +78,20 @@ class SysRole extends React.PureComponent {
     };
 
     return (
-      <SearchList
-        name="baseOrder"
-        searchPanelProps={searchPanelProps}
-        actionBtnGroup={this.getActionBtnGroup()}
-        searchListProps={searchListProps}
-        getDataList={this.getRoleList}
-      />
+      <div>
+        <SearchLi searchListProps={searchListProps} actionBtnGroup={this.getActionBtnGroup()} />
+      </div>
     );
+
+    // return (
+    //   <SearchList
+    //     name="baseOrder"
+    //     searchPanelProps={searchPanelProps}
+    //     actionBtnGroup={this.getActionBtnGroup()}
+    //     searchListProps={searchListProps}
+    //     getDataList={this.getRoleList}
+    //   />
+    // );
   }
 }
 export default SysRole;

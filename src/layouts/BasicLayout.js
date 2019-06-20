@@ -26,7 +26,6 @@ class BasicLayout extends React.PureComponent {
   footerRender = () => {
     return <span>&nbsp;</span>;
   };
-
   render() {
     const { dispatch, children, settings } = this.props;
     const handleMenuCollapse = payload =>
