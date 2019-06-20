@@ -3,7 +3,7 @@ import os from 'os';
 import slash from 'slash2';
 import defaultSettings from './defaultSettings';
 import webpackPlugin from './plugin.config';
-import routerpage  from './router.config';
+import routerpage from './router.config';
 
 const { pwa, primaryColor } = defaultSettings; // preview.pro.ant.design only do not use in your production ;
 // preview.pro.ant.design 专用环境变量，请不要在你的项目中使用它。
@@ -96,7 +96,7 @@ export default {
   targets: {
     ie: 11,
   },
-  devtool:false,
+  devtool: false,
   // 路由配置
   routes: routerpage,
   // Theme for antd

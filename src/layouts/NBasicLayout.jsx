@@ -23,9 +23,7 @@ const menuDataRender = menuList => {
 };
 
 const footerRender = () => {
-   return (
-     <span>&nbsp;</span>
-   )
+  return <span>&nbsp;</span>;
 };
 
 const BasicLayout = props => {
@@ -39,9 +37,6 @@ const BasicLayout = props => {
       dispatch({
         type: 'user/fetchCurrent',
       });
-      // dispatch({
-      //   type: 'settings/getSetting',
-      // });
     }
   });
   /**

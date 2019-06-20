@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'umi';
+// eslint-disable-next-line import/no-unresolved
 import Authorized from './Authorized';
 
 const AuthorizedRoute = ({ component: Component, render, authority, redirectPath, ...rest }) => (

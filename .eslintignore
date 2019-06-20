@@ -1,3 +1,6 @@
 /lambda/
 /scripts
 /config
+/functions/mock/**
+*.less
+*.*

@@ -6,44 +6,38 @@ import store from 'store';
 import { router } from 'umi';
 import styles from './login.less';
 
+// import { query } from '@/services/user';
 
-
-
-@connect(({user}) => ({
-    user
+@connect(({ user }) => ({
+  user,
 }))
-
 class UserLogin extends React.PureComponent {
   constructor(props) {
-        super(props);
-        this.state = {
-        };
-      }
+    super(props);
+    this.state = {};
+  }
 
   handleSubmit = e => {
-    const {form} = this.props
-    const {
-        dispatch
-      } = this.props;
-    
+    const { form } = this.props;
+    const { dispatch } = this.props;
+
     e.preventDefault();
-    form.validateFields((err) => {
+    form.validateFields(err => {
       if (!err) {
         dispatch({
-             type:"user/userLogin",
-             success:(response)=>{
-                store.set('token', response.token);
-                router.push("/")
-             }
-        })
-
-      }          
+          type: 'user/userLogin',
+          success: response => {
+            store.set('token', response.token);
+            router.push({ pathname: '/', query: { id: '12' } });
+          },
+        });
+      }
     });
   };
 
   render() {
     const {
-        form: { getFieldDecorator },
+      form: { getFieldDecorator },
     } = this.props;
     return (
       <Form onSubmit={this.handleSubmit} className={styles.login_form}>
@@ -73,19 +67,17 @@ class UserLogin extends React.PureComponent {
             valuePropName: 'checked',
             initialValue: true,
           })(<Checkbox>自动登录</Checkbox>)}
-          <a className={styles.login_form_forgot} href="">
+          {/* <a className={styles.login_form_forgot} href="">
             忘记密码?
-          </a>
+          </a> */}
           <Button type="primary" htmlType="submit" className={styles.login_form_button}>
             登录
           </Button>
-          <a href="">注册</a>
+          {/* <a href="">注册</a> */}
         </Form.Item>
       </Form>
     );
   }
 }
-
-const userLoginFrom = Form.create()(UserLogin)
+const userLoginFrom = Form.create()(UserLogin);
 export default connect()(userLoginFrom);
-

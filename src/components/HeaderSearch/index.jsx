@@ -3,6 +3,7 @@ import { Input, Icon, AutoComplete } from 'antd';
 import classNames from 'classnames';
 import debounce from 'lodash/debounce';
 import styles from './index.less';
+
 export default class HeaderSearch extends Component {
   static defaultProps = {
     defaultActiveFirstOption: false,
@@ -27,6 +28,7 @@ export default class HeaderSearch extends Component {
   }
 
   timeout = null;
+
   inputRef = null;
 
   constructor(props) {
@@ -54,6 +56,7 @@ export default class HeaderSearch extends Component {
       }, 0);
     }
   };
+
   onChange = value => {
     const { onSearch, onChange } = this.props;
     this.setState({
@@ -68,6 +71,7 @@ export default class HeaderSearch extends Component {
       onChange(value);
     }
   };
+
   enterSearchMode = () => {
     const { onVisibleChange } = this.props;
     onVisibleChange(true);
@@ -84,12 +88,14 @@ export default class HeaderSearch extends Component {
       },
     );
   };
+
   leaveSearchMode = () => {
     this.setState({
       searchMode: false,
       value: '',
     });
   };
+
   debouncePressEnter = () => {
     const { onPressEnter } = this.props;
     const { value } = this.state;

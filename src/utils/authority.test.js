@@ -1,5 +1,7 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import 'jest';
 import { getAuthority } from './authority';
+
 describe('getAuthority should be strong', () => {
   it('empty', () => {
     expect(getAuthority(null)).toEqual(null); // default value

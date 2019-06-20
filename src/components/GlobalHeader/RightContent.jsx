@@ -2,7 +2,6 @@ import React from 'react';
 
 import { connect } from 'dva';
 
-
 // eslint-disable-next-line import/no-unresolved
 import Avatar from './AvatarDropdown';
 import styles from './index.less';
@@ -15,7 +14,7 @@ class GlobalHeaderRight extends React.PureComponent {
     if (theme === 'dark' && layout === 'topmenu') {
       className = `${styles.right}  ${styles.dark}`;
     }
-    
+
     return (
       <div className={className}>
         <Avatar />

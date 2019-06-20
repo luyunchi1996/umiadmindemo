@@ -1,6 +1,10 @@
 export default {
   'menu.welcome': '欢迎',
-  'menu.sysSettings':'系统设置',
+  'menu.sysSettings': '系统设置',
+
+  'menu.sysSettings.sysOpeator': '操作管理',
+  'menu.sysSettings.sysSource': '资源管理',
+  'menu.sysSettings.sysRole': '角色管理',
 
   'menu.more-blocks': '更多区块',
   'menu.home': '首页',

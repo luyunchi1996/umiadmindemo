@@ -2,7 +2,9 @@ import { Spin } from 'antd';
 import isEqual from 'lodash/isEqual';
 import React from 'react'; // eslint-disable-next-line import/no-cycle
 
+// eslint-disable-next-line import/no-unresolved
 import { isComponentClass } from './Secured';
+
 export default class PromiseRender extends React.Component {
   state = {
     component: () => null,

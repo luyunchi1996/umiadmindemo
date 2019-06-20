@@ -5,7 +5,7 @@ import React from 'react';
 import Redirect from 'umi/redirect';
 
 const getRouteAuthority = (path, routeData) => {
-  let authorities = undefined;
+  let authorities;
   routeData.forEach(route => {
     // match prefix
     if (pathToRegexp(`${route.path}(.*)`).test(path)) {
@@ -29,7 +29,9 @@ const AuthComponent = ({
 }) => {
   const { currentUser } = user;
   const { routes = [] } = route;
+
   const isLogin = currentUser && currentUser.name;
+
   return (
     <Authorized
       authority={getRouteAuthority(location.pathname, routes)}

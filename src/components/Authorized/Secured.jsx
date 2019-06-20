@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line import/no-unresolved
 import CheckPermissions from './CheckPermissions';
 /**
  * 默认不能访问任何页面

@@ -85,6 +85,7 @@ const SettingModel = {
   reducers: {
     getSetting(state = defaultSettings) {
       const setting = {};
+      // eslint-disable-next-line compat/compat
       const urlParams = new URL(window.location.href);
       Object.keys(state).forEach(key => {
         if (urlParams.searchParams.has(key)) {
@@ -103,7 +104,9 @@ const SettingModel = {
     },
 
     changeSetting(state = defaultSettings, { payload }) {
+      // eslint-disable-next-line compat/compat
       const urlParams = new URL(window.location.href);
+
       Object.keys(defaultSettings).forEach(key => {
         if (urlParams.searchParams.has(key)) {
           urlParams.searchParams.delete(key);

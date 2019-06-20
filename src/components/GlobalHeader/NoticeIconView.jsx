@@ -3,11 +3,14 @@ import { Tag, message } from 'antd';
 import { formatMessage } from 'umi-plugin-react/locale';
 import moment from 'moment';
 import groupBy from 'lodash/groupBy';
+// eslint-disable-next-line import/no-unresolved
+import { connect } from 'dva';
+// eslint-disable-next-line import/no-unresolved
 import NoticeIcon from '../NoticeIcon';
 import styles from './index.less';
-import { connect } from 'dva';
 
 class GlobalHeaderRight extends Component {
+  // eslint-disable-next-line react/sort-comp
   getNoticeData = () => {
     const { notices = [] } = this.props;
 
@@ -49,8 +52,10 @@ class GlobalHeaderRight extends Component {
     });
     return groupBy(newNotices, 'type');
   };
+
   getUnreadData = noticeData => {
     const unreadMsg = {};
+    // eslint-disable-next-line compat/compat
     Object.entries(noticeData).forEach(([key, value]) => {
       if (!unreadMsg[key]) {
         unreadMsg[key] = 0;
@@ -62,6 +67,7 @@ class GlobalHeaderRight extends Component {
     });
     return unreadMsg;
   };
+
   changeReadState = clickedItem => {
     const { id } = clickedItem;
     const { dispatch } = this.props;

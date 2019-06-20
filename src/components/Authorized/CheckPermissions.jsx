@@ -1,5 +1,6 @@
 import React from 'react'; // eslint-disable-next-line import/no-cycle
 
+// eslint-disable-next-line import/no-unresolved
 import PromiseRender from './PromiseRender';
 import { CURRENT } from './renderAuthorize';
 

@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { Icon, Tabs, Badge, Spin } from 'antd';
 import classNames from 'classnames';
+// eslint-disable-next-line import/no-unresolved
 import HeaderDropdown from '../HeaderDropdown';
+// eslint-disable-next-line import/no-unresolved
 import NoticeList from './NoticeList';
 import styles from './index.less';
+
 const { TabPane } = Tabs;
 export default class NoticeIcon extends Component {
   static Tab = NoticeList;
+
   static defaultProps = {
     onItemClick: () => {},
     onPopupVisibleChange: () => {},
@@ -17,9 +21,11 @@ export default class NoticeIcon extends Component {
     clearClose: false,
     emptyImage: 'https://gw.alipayobjects.com/zos/rmsportal/wAhyIChODzsoKIOBHcBk.svg',
   };
+
   state = {
     visible: false,
   };
+
   onItemClick = (item, tabProps) => {
     const { onItemClick } = this.props;
 
@@ -27,6 +33,7 @@ export default class NoticeIcon extends Component {
       onItemClick(item, tabProps);
     }
   };
+
   onClear = (name, key) => {
     const { onClear } = this.props;
 
@@ -34,6 +41,7 @@ export default class NoticeIcon extends Component {
       onClear(name, key);
     }
   };
+
   onTabChange = tabType => {
     const { onTabChange } = this.props;
 
@@ -41,6 +49,7 @@ export default class NoticeIcon extends Component {
       onTabChange(tabType);
     }
   };
+
   onViewMore = (tabProps, event) => {
     const { onViewMore } = this.props;
 

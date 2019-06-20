@@ -2,6 +2,7 @@ import React from 'react';
 import { notification, Button, message } from 'antd';
 import { formatMessage } from 'umi-plugin-react/locale';
 import defaultSettings from '../config/defaultSettings';
+
 const { pwa } = defaultSettings; // if pwa is true
 
 if (pwa) {
@@ -26,6 +27,7 @@ if (pwa) {
         return Promise.resolve();
       } // Send skip-waiting event to waiting SW with MessageChannel
 
+      // eslint-disable-next-line compat/compat
       await new Promise((resolve, reject) => {
         const channel = new MessageChannel();
 

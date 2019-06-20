@@ -1,22 +1,30 @@
-import { query as queryUsers, queryCurrent,login } from '@/services/user';
+import { query as queryUsers, queryCurrent, login, authorityItem } from '@/services/user';
 
 const UserModel = {
   namespace: 'user',
   state: {
-    currentUser: {},
-    token:""
+    currentUser: {
+      name: 'Serati Ma',
+    },
+    menuItem: [],
+    token: '',
   },
   effects: {
-    *userLogin({payload,success},{call}){
-
-       const response = yield call(login,{payload})
+    *userLogin({ payload, success }, { call }) {
+      const response = yield call(login, { payload });
       //  yield put({
       //     type:"saveToken",
       //     payload:response.token
       //  });
-       success(response)
+      success(response);
     },
-
+    *menuItem({ payload }, { call, put }) {
+      const response = yield call(authorityItem, { payload });
+      yield put({
+        type: 'saveMenuItem',
+        payload: response.list,
+      });
+    },
     *fetch(_, { call, put }) {
       const response = yield call(queryUsers);
       yield put({
@@ -27,7 +35,7 @@ const UserModel = {
 
     *fetchCurrent(_, { call, put }) {
       const response = yield call(queryCurrent);
-      const {token} = response
+      const { token } = response;
       yield put({
         type: 'saveCurrentUser',
         payload: token,
@@ -35,8 +43,11 @@ const UserModel = {
     },
   },
   reducers: {
-    saveToken(state,action){
-      return { ...state, token: action.payload ||"" };
+    saveMenuItem(state, action) {
+      return { ...state, menuItem: action.payload || '' };
+    },
+    saveToken(state, action) {
+      return { ...state, token: action.payload || '' };
     },
 
     saveCurrentUser(state, action) {
