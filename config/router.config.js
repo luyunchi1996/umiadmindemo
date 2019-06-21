@@ -17,7 +17,6 @@ export default [
         path: '/',
         component: './index',
       },
-
       {
         name: 'sysSettings',
         icon: 'warning',

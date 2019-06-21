@@ -1,7 +1,10 @@
 import React from 'react';
 
 import styles from './style.less';
+
 import { Button } from 'antd';
+import SearchPanel from './searchpanel';
+import Lists from './lists';
 
 class SearchLi extends React.PureComponent {
   constructor(props) {
@@ -11,44 +14,12 @@ class SearchLi extends React.PureComponent {
   componentDidMount() {}
 
   render() {
-    const {
-      searchListProps: { tableData, tableColumns },
-      actionBtnGroup,
-    } = this.props;
-    const { list } = tableData;
-    let fileldList = [];
+    const { searchListProps, actionBtnGroup, searchPanelProps } = this.props;
 
     return (
-      <div className={styles.list} key="searchList">
-        <ul className={styles.list_header} key="searchListHeader">
-          {tableColumns.map(obj => {
-            fileldList.push(obj.dataIndex);
-            return <li key={`searchListHeader_${obj.dataIndex}`}>{obj.title}</li>;
-          })}
-          {actionBtnGroup && actionBtnGroup.length != 0 ? (
-            <li key="searchListHeader_operation">操作</li>
-          ) : (
-            ''
-          )}
-        </ul>
-        {list.map((idx, i) => {
-          return (
-            <ul className={styles.list_content} key={`searchListContent_${i}`}>
-              {fileldList.map((key, j) => {
-                return <li key={`searchListContent_${i}_${j}`}>{list[i][key]}</li>;
-              })}
-              {actionBtnGroup && actionBtnGroup.length != 0 ? (
-                <li key="searchListContent_operation">
-                  {actionBtnGroup.map(obj => {
-                    <Button type="primary">{obj.text}</Button>;
-                  })}
-                </li>
-              ) : (
-                ''
-              )}
-            </ul>
-          );
-        })}
+      <div>
+        <SearchPanel searchPanelProps={searchPanelProps} />
+        <Lists searchListProps={searchListProps} actionBtnGroup={actionBtnGroup} />
       </div>
     );
   }
