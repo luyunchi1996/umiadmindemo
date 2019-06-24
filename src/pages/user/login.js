@@ -22,10 +22,12 @@ class UserLogin extends React.PureComponent {
     const { dispatch } = this.props;
 
     e.preventDefault();
-    form.validateFields(err => {
+    form.validateFields((err, values) => {
       if (!err) {
+        const params = values;
         dispatch({
           type: 'user/userLogin',
+          payload: params,
           success: response => {
             store.set('token', response.token);
             router.push({ pathname: '/', query: { id: '12' } });
@@ -42,7 +44,7 @@ class UserLogin extends React.PureComponent {
     return (
       <Form onSubmit={this.handleSubmit} className={styles.login_form}>
         <Form.Item>
-          {getFieldDecorator('username', {
+          {getFieldDecorator('name', {
             rules: [{ required: true, message: '请输入你的用户名!' }],
           })(
             <Input
@@ -52,7 +54,7 @@ class UserLogin extends React.PureComponent {
           )}
         </Form.Item>
         <Form.Item>
-          {getFieldDecorator('password', {
+          {getFieldDecorator('passWord', {
             rules: [{ required: true, message: '请输入你的密码!' }],
           })(
             <Input

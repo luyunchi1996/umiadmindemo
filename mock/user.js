@@ -7,7 +7,7 @@ const loginInfo = (req, res) => {
   });
 };
 export default {
-  'GET /api/login': loginInfo,
+  'POST /api/login': loginInfo,
   'GET /api/user/authorityItem': {
     userid: '00000001',
     list: [

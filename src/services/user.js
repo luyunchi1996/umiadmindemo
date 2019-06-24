@@ -2,8 +2,11 @@ import request from '@/utils/request';
 // eslint-disable-next-line no-unused-vars
 import { func } from 'prop-types';
 
-export async function login() {
-  return request('/api/login');
+export async function login(params) {
+  return request('/api/login', {
+    method: 'POST',
+    data: params,
+  });
 }
 
 export async function query() {

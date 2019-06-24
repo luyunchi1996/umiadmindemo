@@ -11,7 +11,7 @@ const UserModel = {
   },
   effects: {
     *userLogin({ payload, success }, { call }) {
-      const response = yield call(login, { payload });
+      const response = yield call(login, payload);
       //  yield put({
       //     type:"saveToken",
       //     payload:response.token
