@@ -60,9 +60,16 @@ class SysRole extends React.PureComponent {
   getSearchEntity = () => {
     return [
       {
-        label: '1',
+        label: 'name',
         key: 'a',
-        type: 'Input',
+        type: 'input',
+      },
+      {
+        label: 'name',
+        key: 'b',
+        type: 'select',
+        initialValue: 1,
+        selectData: [{ id: 1, name: 'name1' }, { id: 2, name: 'name2' }, { id: 3, name: 'name3' }],
       },
     ];
   };
@@ -77,6 +84,7 @@ class SysRole extends React.PureComponent {
       searchEntity: this.getSearchEntity(),
       formatAndSetSearchParams: this.formatAndSetSearchParams,
     };
+
     const tableDatas = {
       list: [
         { id: '1', a: '00', b: '百度', c: '02', d: '4', href: 'http://www.baidu.com' },
@@ -96,7 +104,11 @@ class SysRole extends React.PureComponent {
 
     return (
       <div>
-        <SearchLi searchListProps={searchListProps} actionBtnGroup={this.getActionBtnGroup()} />
+        <SearchLi
+          searchPanelProps={searchPanelProps}
+          searchListProps={searchListProps}
+          actionBtnGroup={this.getActionBtnGroup()}
+        />
       </div>
     );
 
