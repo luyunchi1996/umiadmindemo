@@ -4,7 +4,15 @@ import SearchLi from '@/components/searchli';
 class SysSource extends React.PureComponent {
   columns = [
     { title: 'route路径', dataIndex: 'a' },
-    { title: 'compoment路径', dataIndex: 'b' },
+    {
+      title: 'compoment路径',
+      dataIndex: 'b',
+      otherFileds: ['href'],
+      render: data => {
+        const { otherFileds, value } = data;
+        return <a href={otherFileds.href}>{value}</a>;
+      },
+    },
     { title: '图标', dataIndex: 'c' },
   ];
   constructor(props) {
@@ -57,7 +65,7 @@ class SysSource extends React.PureComponent {
         type: 'input',
       },
       {
-        label: 'name',
+        label: 'name2',
         key: 'b',
         type: 'select',
         initialValue: 1,

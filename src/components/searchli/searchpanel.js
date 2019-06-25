@@ -20,24 +20,30 @@ class SearchPanel extends React.PureComponent {
     const {
       form: { getFieldDecorator },
     } = this.props;
-    const selectData = [
-      { id: 1, name: 'name1' },
-      { id: 2, name: 'name2' },
-      { id: 3, name: 'name3' },
-    ];
-    return (
-      <div>
-        {searchEntity.map((obj, i) => {
-          return (
-            <FormItem key={`formItem_${i}`} label={obj.label}>
-              {getFieldDecorator(obj.key, {
-                initialValue: obj.initialValue,
-              })(_getInputHandler({ selectData: selectData, key: obj.key, type: obj.type }))}
-            </FormItem>
+    return <div>{_renderRow(searchEntity)}</div>;
+    function _renderRow(data) {
+      let ceilRow = [];
+      for (let y = 0; y < Math.ceil(data.length / 3); y++) {
+        let cols = [];
+        for (let x = 0; x < 3; x++) {
+          let z = y * 3 + x;
+          let obj = data[z];
+          if (!obj) continue;
+          cols.push(
+            <Col md={6} sm={24} key={`formItem_col_${z}`}>
+              <FormItem key={`formItem_${z}`} label={obj.label}>
+                {getFieldDecorator(obj.key, {
+                  initialValue: obj.initialValue,
+                })(_getInputHandler({ selectData: obj.selectData, key: obj.key, type: obj.type }))}
+              </FormItem>
+            </Col>,
           );
-        })}
-      </div>
-    );
+        }
+        const row = <Row className={styles.searchItems}>{cols}</Row>;
+        ceilRow.push(row);
+      }
+      return ceilRow;
+    }
     function _getInputHandler(data) {
       const { selectData, type, key } = data;
       const NewHocComponent = getControlHandler(type);

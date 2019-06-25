@@ -24,3 +24,15 @@
     background-color: green;
   }
 }
+.searchItems {
+  display: flex;
+  :global(.ant-form-item) {
+    padding: 0 16px;
+    :global(.ant-select-enabled) {
+      width: 100%;
+    }
+    :global(.ant-form-item-label) {
+      line-height: 1.2;
+    }
+  }
+}
