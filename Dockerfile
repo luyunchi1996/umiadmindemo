@@ -13,6 +13,7 @@
  
  # 安装项目依赖包
  #RUN yarn config set ignore-engines true
+ RUN  mkdir /etc/yum.repos.d
  RUN  curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo
  RUN  curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
  RUN  yum install yarn
