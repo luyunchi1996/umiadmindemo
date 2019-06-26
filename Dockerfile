@@ -1,7 +1,7 @@
 # 指定基础镜像
  FROM node:10.16.0
 
- FROM yarnpkg/node-yarn:latest
+ #FROM yarnpkg/node-yarn:latest
  # 指定（镜像创建者）
  MAINTAINER DEMO
  
@@ -15,7 +15,7 @@
  RUN curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
  RUN curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
  RUN yum install yarn
- 
+
  RUN yarn
  #RUN npm rebuild node-sass --force
  
@@ -27,4 +27,4 @@
  EXPOSE 8000
  # 容器启动时执行的命令，类似npm run start
  CMD ["yarn","start","build"]
- #####
+ #####it
