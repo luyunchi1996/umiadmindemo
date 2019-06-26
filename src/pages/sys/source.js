@@ -79,10 +79,18 @@ class SysSource extends React.PureComponent {
     return params;
   };
 
+  handleAdd = () => {
+    debugger;
+  };
+
+  handleSearch = params => {};
+
   render() {
     const searchPanelProps = {
       searchEntity: this.getSearchEntity(),
       formatAndSetSearchParams: this.formatAndSetSearchParams,
+      handleSearch: this.handleSearch,
+      handleAdd: this.handleAdd,
     };
     const tableDatas = {
       list: [

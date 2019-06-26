@@ -13,14 +13,43 @@ class SearchPanel extends React.PureComponent {
     this.state = {};
   }
 
+  handleReset = () => {};
+
+  handleSearchProxy = e => {
+    const {
+      form,
+      searchPanelProps: { handleSearch },
+    } = this.props;
+    form.validateFields((err, fieldsValue) => {
+      if (err) return;
+      const values = {
+        ...fieldsValue,
+      };
+      handleSearch(values);
+    });
+  };
+
   render() {
     const {
-      searchPanelProps: { searchEntity },
+      searchPanelProps: { searchEntity, handleAdd },
     } = this.props;
     const {
       form: { getFieldDecorator },
     } = this.props;
-    return <div>{_renderRow(searchEntity)}</div>;
+    return (
+      <div>
+        {_renderRow(searchEntity)}
+        <div>
+          <Button onClick={() => handleAdd()} type="primary">
+            新增
+          </Button>
+          <Button onClick={e => this.handleSearchProxy(e)} type="primary">
+            查询
+          </Button>
+          <Button onClick={this.handleReset}>重置</Button>
+        </div>
+      </div>
+    );
     function _renderRow(data) {
       let ceilRow = [];
       for (let y = 0; y < Math.ceil(data.length / 3); y++) {
@@ -39,7 +68,11 @@ class SearchPanel extends React.PureComponent {
             </Col>,
           );
         }
-        const row = <Row className={styles.searchItems}>{cols}</Row>;
+        const row = (
+          <Row key={`formItemRow_${y}`} className={styles.searchItems}>
+            {cols}
+          </Row>
+        );
         ceilRow.push(row);
       }
       return ceilRow;

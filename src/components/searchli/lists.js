@@ -81,6 +81,7 @@ class Lists extends React.PureComponent {
         <Button
           type="primary"
           size="small"
+          className={styles.btn}
           onClick={() => operation.handleBtnClick(data)}
           key={`operation_${operation.key}_${operation.index}`}
         >
