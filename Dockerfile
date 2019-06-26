@@ -1,5 +1,7 @@
 # 指定基础镜像
  FROM node:10.16.0
+
+ FROM yarnpkg/node-yarn:latest
  # 指定（镜像创建者）
  MAINTAINER DEMO
  
@@ -9,8 +11,8 @@
  WORKDIR /app
  
  # 安装项目依赖包
- RUN npm install
- RUN npm rebuild node-sass --force
+ RUN yarn
+ #RUN npm rebuild node-sass --force
  
  # 配置环境变量
  ENV HOST 0.0.0.0
@@ -19,5 +21,5 @@
  # 容器对外暴露的端口号
  EXPOSE 8000
  # 容器启动时执行的命令，类似npm run start
- CMD ["npm", "build"]
- ####
+ CMD ["yarn","start","build"]
+ #####
