@@ -11,6 +11,7 @@
  WORKDIR /app
  
  # 安装项目依赖包
+ RUN yarn config set ignore-engines true
  RUN yarn
  #RUN npm rebuild node-sass --force
  
