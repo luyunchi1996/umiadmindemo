@@ -13,9 +13,9 @@
  
  # 安装项目依赖包
  #RUN yarn config set ignore-engines true
- RUN curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
- RUN curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
- RUN yum install yarn
+ RUN centos curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+ RUN centos curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
+ RUN centos yum install yarn
 
  RUN yarn
  #RUN npm rebuild node-sass --force
