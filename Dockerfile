@@ -15,7 +15,7 @@
  #RUN yarn config set ignore-engines true
  RUN  mkdir /etc/yum.repos.d
  RUN  curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo
- RUN  curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
+#  RUN  curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
  RUN  yum install yarn
  RUN yarn
  #RUN npm rebuild node-sass --force
