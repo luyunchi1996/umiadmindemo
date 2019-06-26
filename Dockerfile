@@ -1,4 +1,5 @@
 # 指定基础镜像
+ FROM centos
  FROM node:10.16.0
 
  #FROM yarnpkg/node-yarn:latest
