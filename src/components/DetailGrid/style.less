@@ -1,0 +1,52 @@
+@import '~antd/lib/style/themes/default.less';
+
+.detailGrid {
+  margin-bottom: 16px;
+  width: 80%;
+  .gridColumn {
+    .flexRow {
+      display: flex;
+      flex-direction: row;
+      border-bottom: 1px solid #e9e9e9;
+      .flexLabel {
+        width: 200px;
+        padding-bottom: 10px;
+        color: rgba(0, 0, 0, 0.85);
+        background-color: rgb(250, 250, 250);
+        padding: 12px 20px;
+        border-left: 1px solid #e9e9e9;
+        border-right: 1px solid #e9e9e9;
+      }
+      .flexValue {
+        flex: 1;
+        padding-bottom: 10px;
+        padding: 12px 20px;
+      }
+    }
+    .noBorderBottom {
+      border-bottom: 0;
+    }
+  }
+  .gridColumn:last-child {
+    .flexLabel {
+      border-bottom: 0;
+    }
+    .flexValue {
+      border-bottom: 0;
+    }
+  }
+  :global {
+    .ant-card .ant-card-head {
+      background-color: #0964ce !important;
+    }
+    .ant-card-head-title {
+      color: #fff;
+    }
+    .ant-card-body {
+      padding: 0;
+    }
+    .ant-card-bordered {
+      border-left: 0;
+    }
+  }
+}
